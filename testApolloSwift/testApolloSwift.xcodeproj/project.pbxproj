@@ -12,6 +12,7 @@
 		03D9D99E21AE921A009E2ED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D9D99C21AE921A009E2ED8 /* Main.storyboard */; };
 		03D9D9A021AE921A009E2ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D9D99F21AE921A009E2ED8 /* Assets.xcassets */; };
 		03D9D9A321AE921A009E2ED8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D9D9A121AE921A009E2ED8 /* LaunchScreen.storyboard */; };
+		E873D01761820DF0A49D3F6C /* Pods_testApolloSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E245E9022836D2AEA37E0108 /* Pods_testApolloSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		03D9D99F21AE921A009E2ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03D9D9A221AE921A009E2ED8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03D9D9A421AE921A009E2ED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2155A9BD665341E23783ECF8 /* Pods-testApolloSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testApolloSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-testApolloSwift/Pods-testApolloSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		E245E9022836D2AEA37E0108 /* Pods_testApolloSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testApolloSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4D5D3073411C70C261850FD /* Pods-testApolloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testApolloSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-testApolloSwift/Pods-testApolloSwift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E873D01761820DF0A49D3F6C /* Pods_testApolloSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				03D9D99721AE921A009E2ED8 /* testApolloSwift */,
 				03D9D99621AE921A009E2ED8 /* Products */,
+				B8B50FF60E5F03161411C35D /* Pods */,
+				BC8D489474AEB13E0CB350CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = testApolloSwift;
 			sourceTree = "<group>";
 		};
+		B8B50FF60E5F03161411C35D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2155A9BD665341E23783ECF8 /* Pods-testApolloSwift.debug.xcconfig */,
+				F4D5D3073411C70C261850FD /* Pods-testApolloSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC8D489474AEB13E0CB350CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E245E9022836D2AEA37E0108 /* Pods_testApolloSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03D9D9A721AE921A009E2ED8 /* Build configuration list for PBXNativeTarget "testApolloSwift" */;
 			buildPhases = (
+				D70CDB28832CCD63C77E8C47 /* [CP] Check Pods Manifest.lock */,
+				03D9D9AA21AEAFD5009E2ED8 /* Generate Apollo GraphQL API */,
 				03D9D99121AE921A009E2ED8 /* Sources */,
 				03D9D99221AE921A009E2ED8 /* Frameworks */,
 				03D9D99321AE921A009E2ED8 /* Resources */,
+				9D48F7FCAFBB2784199E38E0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,59 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03D9D9AA21AEAFD5009E2ED8 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift";
+		};
+		9D48F7FCAFBB2784199E38E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-testApolloSwift/Pods-testApolloSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-testApolloSwift/Pods-testApolloSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D70CDB28832CCD63C77E8C47 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-testApolloSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		03D9D99121AE921A009E2ED8 /* Sources */ = {
@@ -278,6 +358,7 @@
 		};
 		03D9D9A821AE921A009E2ED8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2155A9BD665341E23783ECF8 /* Pods-testApolloSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -295,6 +376,7 @@
 		};
 		03D9D9A921AE921A009E2ED8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4D5D3073411C70C261850FD /* Pods-testApolloSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
